@@ -16,25 +16,28 @@
     </header>
     <main>
         <div class="adding-container">
-            <button class="add-book-btn" type="button"><img src="./plus-sign.svg" alt=""></button>
+            <button class="add-book-btn" type="button"><img src="./plus-sign.svg" alt="" title="Add book"></button>
             <div class="add-book">Add Book ...</div>
         </div>
-        <div class="book-container"></div>
-        <div class="book-container"></div>
-        <div class="book-container"></div>
-        <div class="book-container"></div>
-        <div class="book-container"></div>
-        
 
     </main>
+    <div class="book-form-layer">
+        <div class="book-form">
+            <form>
+                <label>Book Name : <input type=text class="text-input name" name="book-name" required/></label>
+                <label>Book Author: <input type="text" class="text-input author" name="book-author" /></label>
+                <label>How many pages does the Book have? <input type="number" class="pages" name="book-pages" required /></label>
+                <label>Have you read it yet? <input type="checkbox" class="read" name="book-read" required/></label>
+                <button type="button" class="save-book-btn">Save</button>
+            </form>
+        </div>
+    </div>
     <footer>
-        <P>All Rights Reserved By ME!!! </P>
+        <a href="https://github.com/HereOnEdge/library" title="Github Source Code" ><P>All Rights Reserved By ME!!! </P></a>
     </footer>
 
-
-    
-    
-    <script>
+    <script src="./books.js" defer>
+        
     </script>
 </body>
 </html>

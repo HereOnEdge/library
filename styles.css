@@ -16,6 +16,7 @@ body {
     grid-template-rows: 2fr 10fr 1fr;
 }
 header {
+    grid-area: 1 / 1 / span 1 / 2;
     display: grid;
     font-size: 1.3rem;
     grid-template-columns: 1fr minmax(5vw,120px);
@@ -37,7 +38,8 @@ header {
     background-position: center bottom;
 }
 main {
-    padding: 10% 20%;
+    grid-area: 2 / 1 / span 1 / 2;
+    padding: 10% 15%;
     display:grid;
     grid-template-columns: 1fr;
     grid-template-rows:  minmax(1fr, 90px);
@@ -68,6 +70,7 @@ main {
     border-radius: 8px;
     height: 50%;
     margin-right: 10px;
+    cursor: pointer;
 }
 img {
     width: 100%;
@@ -81,21 +84,174 @@ img {
     border-radius: 8px;
 }
 .book-container {
-    display: none;
+    display: grid;
     justify-self: center;
-    width: 95%;
+    width: 100%;
     max-width: 700px;
     max-height: 90px;
-    grid-template-columns: 50% 10% 30% 10%;
-    grid-template-rows: 1fr;
+    grid-template-columns: 3% 25% 23% 20% 20%;
+    grid-template-rows: 50% 50%;
     text-align: center;
     color: #223e1f;
     border: 2px solid #227e5f;
     border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    column-gap: 5px;
+    padding-bottom: 2px;
+    overflow: auto;
 }
+.close-btn {
+    
+    grid-area: 1 / 1 /2 / 2;
+    margin: 5px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    background-color: bisque;
+    color: #223e1f;
+    font-weight: 800;
+    cursor: pointer;
+    border: none;
+}
+.book-title {
+    grid-area: 2 / 2 / 3 / 3;
+    align-self: center ;
+    row-gap: 0;
+}
+.book-author {
+    grid-area: 2 / 3 / 3 / 4;
+    align-self: center;
+}
+.book-pages {
+    grid-area: 2 / 4 / 3 / 5;
+    align-self: center;
+}
+.book-read {
+    grid-area: 2 / 5 / 3 / 6;
+    width: 70%;
+    height: 70%;
+    align-self: center;
+    justify-self: center;
+}
+.checked-logo {
+    width: 50%;
+}
+.not-checked-logo {
+    width: 50%;
+}
+.book-title-title {
+    color: #227e5f;
+    font-size: 0.8rem;
+    font-weight: 800;
+    grid-area: 1 / 2 / 2 / 3;
+    align-self: center;
+    margin-left: -3%;
+}
+.book-author-title {
+    border-left: 3px solid #227e5f;
+    color: #227e5f;
+    font-size: 0.8rem;
+    font-weight: 800;
+    grid-area: 1 / 3 / 2 / 4;
+    align-self: center;
+}
+.book-pages-title {
+    border-left: 3px solid #227e5f;
+    color: #227e5f;
+    font-size: 0.8rem;
+    font-weight: 800;
+    grid-area: 1 / 4 / 2 / 5;
+    align-self: center;
+}
+.book-read-title {
+    border-left: 3px solid #227e5f;
+    padding: 2px;
+    color: #227e5f;
+    font-size: 0.8rem;
+    font-weight: 800;
+    grid-area: 1 / 5 / 2 / 6;
+    align-self: center;
+}
+.book-form-layer {
+    grid-area: 1 / 1 / 4 / span 1;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 1fr 1fr 8fr 1fr;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.book-form {
+    justify-self: center;
+    background-color: #227e5f;
+    opacity: 90%;
+    grid-area: 2 / 1 / 5 / 2;
+    border-radius: 8px;
+    padding: 20px;
+    width: 50%;
+    min-height: 50%;
+    max-width: 400px;
+    max-height: 55vh;
+    display: none;
+} 
+form {
+    display: grid;
+    grid-template-rows: repeat(4 , 1fr);
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+form :nth-child(4) {
+    margin-bottom: 20px;
+}
+.read {
+    width: 1.5rem;
+    height: 1.5rem;
+    float: right;
+    margin-bottom: 5px;
+    margin-top: 0;
+    background-color: black;
+    color: bisque;
+    border-radius: 8px;
+}
+input {
+    display: block;
+    margin-top: 5px;
+    width: 60%;
+    height: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: bisque;
+    border-radius: 8px;
+}
+.save-book-btn {
+    width: 40%;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    height: 2rem;
+    background-color: bisque;
+    color: #223e1f;
+    font-size: 1.4rem;
+    font-weight: 700;
+    border-radius: 10px;
+}
+
 footer {
+    grid-area: -2 / 1 / span 1 / 2;
     text-align: center;
     font-size: 1rem;
     background-color: #223e1f;
     color: bisque;
+    
+}
+a {
+    text-decoration: none;
+}
+a:visited {
+    color: bisque;
+}
+a:hover {
+    color: white;
+    text-decoration: underline;
 }
