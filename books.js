@@ -74,6 +74,15 @@ book.prototype.bookShelf = function (){
             remove_btn.textContent = "X";
             remove_btn.classList.add("close-btn")
             book_container.appendChild(remove_btn);
+            book_read.addEventListener("click" , () => {
+                if(library[Book].read == true) {
+                    library[Book].read = false;
+                    booker.bookShelf()
+                } else {
+                    library[Book].read = true;
+                    booker.bookShelf()
+                }
+            })
         }
 }
 book.prototype.addBook = function(title , pages , author , read){
