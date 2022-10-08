@@ -78,9 +78,11 @@ book.prototype.bookShelf = function (){
                 if(library[Book].read == true) {
                     library[Book].read = false;
                     booker.bookShelf()
+                    booker.removeBook()
                 } else {
                     library[Book].read = true;
                     booker.bookShelf()
+                    booker.removeBook()
                 }
             })
         }
