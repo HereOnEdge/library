@@ -5,26 +5,26 @@ let body_element = document.querySelector("body");
 let footer_element = document.querySelector("footer");
 let save_btn = document.querySelector(".save-book-btn");
 
-function book() {
-    
-}
-book.prototype.info = function (bookTitle){
-    for (let i = 0 ; i < library.length ; i++){
-        if (bookTitle == library[i].title){
-            let isReaded = "";
-            library[i].read == true ? isReaded = "has been readed" : isReaded = "havnt been read yet !" ;
-            return `${library[i].title} by ${library[i].author} , ${library[i].pages} pages , ${isReaded}`; 
+class book {
+
+
+    info(bookTitle) {
+        for (let i = 0; i < library.length; i++) {
+            if (bookTitle == library[i].title) {
+                let isReaded = "";
+                library[i].read == true ? isReaded = "has been readed" : isReaded = "havnt been read yet !";
+                return `${library[i].title} by ${library[i].author} , ${library[i].pages} pages , ${isReaded}`;
+            }
         }
+
+
     }
-        
-    
-}
-book.prototype.bookShelf = function (){
+    bookShelf() {
         let containers = document.querySelectorAll(".book-container");
-        for (let container of containers){
+        for (let container of containers) {
             container.remove()
         }
-        for(let Book in library) {
+        for (let Book in library) {
             let book_container = document.createElement("div");
             book_container.classList.add("book-container");
             main_element.appendChild(book_container);
@@ -44,12 +44,12 @@ book.prototype.bookShelf = function (){
             book_read.classList.add("book-read");
             let checked_logo = document.createElement("img");
             checked_logo.classList.add("checked-logo");
-            checked_logo.setAttribute("src" , "./checked.svg");
-            checked_logo.setAttribute("alt" , "");
+            checked_logo.setAttribute("src", "./checked.svg");
+            checked_logo.setAttribute("alt", "");
             let not_checked_logo = document.createElement("img");
             not_checked_logo.classList.add("not-checked-logo");
             not_checked_logo.setAttribute("src", "./not-checked.svg");
-            not_checked_logo.setAttribute("alt" , "");
+            not_checked_logo.setAttribute("alt", "");
             library[Book].read == true ? book_read.appendChild(checked_logo) : book_read.appendChild(not_checked_logo);
             book_container.appendChild(book_read);
             let book_title_title = document.createElement("div");
@@ -70,12 +70,12 @@ book.prototype.bookShelf = function (){
             book_container.appendChild(book_read_title);
             let remove_btn = document.createElement("button");
             remove_btn.setAttribute("type", "button");
-            remove_btn.setAttribute("title" , "Remove Book")
+            remove_btn.setAttribute("title", "Remove Book")
             remove_btn.textContent = "X";
             remove_btn.classList.add("close-btn")
             book_container.appendChild(remove_btn);
-            book_read.addEventListener("click" , () => {
-                if(library[Book].read == true) {
+            book_read.addEventListener("click", () => {
+                if (library[Book].read == true) {
                     library[Book].read = false;
                     booker.bookShelf()
                     booker.removeBook()
@@ -86,36 +86,36 @@ book.prototype.bookShelf = function (){
                 }
             })
         }
-}
-book.prototype.addBook = function(title , pages , author , read){
-    this.prototype = Object.create(book.prototype)
-    this.prototype.title = title;
-    this.prototype.pages = pages;
-    this.prototype.author = author;
-    this.prototype.read = read
-    
-    library.push(this.prototype)
-} 
+    }
+    addBook(title, pages, author, read) {
+        this.prototype = Object.create(book.prototype)
+        this.prototype.title = title;
+        this.prototype.pages = pages;
+        this.prototype.author = author;
+        this.prototype.read = read
 
-book.prototype.removeBook = function(){
-    let rmv_btns = document.querySelectorAll(".close-btn");
-    let z = 0;
-    for (let btn of rmv_btns) {
-        btn.id = z;
-        z++;
-        btn.addEventListener("click", () => {
-            for(let i = 0 ; i < library.length ; i++){
-                if(i == btn.id){
-                    library.splice(i , 1)
-                    booker.bookShelf();
-                    booker.removeBook()
+        library.push(this.prototype)
+    }
+
+    removeBook() {
+        let rmv_btns = document.querySelectorAll(".close-btn");
+        let z = 0;
+        for (let btn of rmv_btns) {
+            btn.id = z;
+            z++;
+            btn.addEventListener("click", () => {
+                for (let i = 0; i < library.length; i++) {
+                    if (i == btn.id) {
+                        library.splice(i, 1)
+                        booker.bookShelf();
+                        booker.removeBook()
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 }
-
-const booker = new book()
+    const booker = new book()
 
 addBook_btn.addEventListener("click" , () => {
     let book_form_layer = document.querySelector(".book-form-layer");
@@ -125,10 +125,10 @@ addBook_btn.addEventListener("click" , () => {
 })
 save_btn.addEventListener("click", () => {
     let book_title = document.querySelector(".name");
-    let book_author = document.querySelector(".author")    
+    let book_author = document.querySelector(".author")
     let book_pages = document.querySelector(".pages")
     let book_read = document.querySelector(".read")
-    booker.addBook(book_title.value , book_pages.value , book_author.value , book_read.checked)
+    booker.addBook(book_title.value, book_pages.value, book_author.value, book_read.checked)
     let book_form_layer = document.querySelector(".book-form-layer");
     let book_form = document.querySelector(".book-form");
     book_form.setAttribute("style", "display: none");
@@ -138,9 +138,9 @@ save_btn.addEventListener("click", () => {
 })
 
 
-booker.addBook("Harry Potter" , 2500 , "J.K Rolling", true);
-booker.addBook("Every Thing Is Fucked" , 350 , "unknown" , true);
-booker.addBook("When Nitchze Cried", 600 , "unknown" , false);
+booker.addBook("Harry potter", 2500, "J.K Rolling", true);
+booker.addBook("Every Thing Is Fucked", 350, "unknown", true);
+booker.addBook("When Nitchze Cried", 600, "unknown", false);
 console.log(library);
 booker.bookShelf()
 booker.removeBook()
